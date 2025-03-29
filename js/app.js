@@ -9,7 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const markdownInput = document.querySelector("#editor");
     const previewSection = document.querySelector("#preview");
     const charCount = document.querySelector("#charCount");
+
     const body = document.body;
+
+
     
     let wordCount = document.createElement("p");
     wordCount.id = "wordCount";
@@ -20,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const editorPlaceholder = "Escribí tu código Markdown aquí...";
     const previewPlaceholder = "Vista previa de HTML";
+
 
     // Botón para activar/desactivar modo oscuro
     const darkModeBtn = document.createElement("button");
