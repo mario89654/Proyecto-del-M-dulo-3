@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const markdownInput = document.querySelector("#editor");
     const previewSection = document.querySelector("#preview");
     const charCount = document.querySelector("#charCount");
+
+    const body = document.body;
+
+
     
     let wordCount = document.createElement("p");
     wordCount.id = "wordCount";
@@ -19,6 +23,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const editorPlaceholder = "Escribí tu código Markdown aquí...";
     const previewPlaceholder = "Vista previa de HTML";
+
+
+    // Botón para activar/desactivar modo oscuro
+    const darkModeBtn = document.createElement("button");
+    darkModeBtn.id = "darkModeBtn";
+    darkModeBtn.textContent = "Modo Oscuro";
+    darkModeBtn.classList.add("bg-gray-700", "text-white", "px-4", "py-2", "rounded-lg", "transition-all", "duration-300", "hover:bg-gray-600", "ml-2");
+    document.querySelector("header").appendChild(darkModeBtn);
+
+    // Restaurar configuración de modo oscuro desde localStorage
+    if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark");
+    }
+
+    darkModeBtn.addEventListener("click", () => {
+        if (body.classList.contains("dark")) {
+            body.classList.remove("dark");
+            localStorage.setItem("darkMode", "disabled");
+        } else {
+            body.classList.add("dark");
+            localStorage.setItem("darkMode", "enabled");
+        }
+    });
 
     // Restaurar contenido del editor desde localStorage
     markdownInput.value = localStorage.getItem("markdownContent") || editorPlaceholder;
