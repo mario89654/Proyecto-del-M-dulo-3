@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor y Vista Previa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-screen flex flex-col overflow-hidden bg-gray-200">
+
+    <!-- Barra de herramientas -->
+    <header class="fixed w-full bg-blue-600 shadow-md p-4 flex flex-wrap justify-center md:top-0 bottom-0 md:bottom-auto space-x-4">
+        <button id="previewBtn" class="bg-cyan-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-cyan-600">
+            Generar Vista Previa
+        </button>
+        <button id="contrastBtn" class="bg-cyan-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-cyan-600">
+            Contrastar Encabezados
+        </button>
+        
+        <!-- Botones agregados de manera visible en el HTML -->
+        <button id="clearBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-red-400">
+            Limpiar
+        </button>
+        <button id="loadFileBtn" class="bg-purple-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-purple-400">
+            Cargar Markdown
+        </button>
+        <input type="file" id="fileInput" accept=".md" class="hidden">
+        <button id="exportPdfBtn" class="bg-green-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-green-600">
+            Exportar a PDF
+        </button>
+        <button id="cancelBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-400 hidden">
+            Cancelar
+        </button>
+    </header>
+
+    <!-- Contenedor principal -->
+    <main class="flex-1 flex flex-col md:flex-row mt-14 md:mt-16 overflow-hidden p-4">
+        <!-- Editor -->
+        <section class="flex-1 border bg-white p-4 rounded-md overflow-auto md:mr-2">
+            <h2 class="font-bold mb-2">Código</h2>
+            <textarea id="editor" class="w-full h-full p-2 border resize-none"
+                placeholder="Escribí tu código Markdown aquí..."></textarea>
+            <p id="charCount" class="text-gray-500 text-sm mt-2">Caracteres: 0</p> 
+        </section>
+
+        <!-- Vista previa -->
+        <section class="flex-1 border bg-white p-4 rounded-md overflow-auto md:ml-2 mt-4 md:mt-0">
+            <h2 class="font-bold mb-2">Vista Previa</h2>
+            <div id="preview" class="w-full h-full text-gray-500">Vista previa de HTML</div>
+        </section>
+    </main>
+
+    <!-- Librerías necesarias -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
